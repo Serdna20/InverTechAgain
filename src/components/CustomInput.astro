@@ -1,0 +1,11 @@
+---
+const {placeholderText, mediumSized = false, identifier} = Astro.props;
+---
+
+<input type='number' id={identifier} placeholder={placeholderText} class:list={[
+    'p-1',
+    'outline-none',
+    { 'w-[80px]' : mediumSized}
+]}
+>
+

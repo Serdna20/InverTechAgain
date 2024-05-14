@@ -1,0 +1,112 @@
+---    
+---
+
+<section class="w-full flex justify-center items-center flex-col">
+    <button id="generator">Hola</button>
+    <div id="generateIn" class="rounded-full max-w-[1270px] w-4/5 justify-center items-center flex-col">
+        <!-- Se insertan aquí -->
+    </div>
+
+    <!-- <section class="w-full flex-col flex justify-center items-center bg-[color:var(--slight-d-green)] text-white">
+        <h1>Año + Index</h1>
+        <div class="w-full flex-row justify-center items-center gap-5">
+            <div class="flex justify-center items-center flex-col w-1/3">
+                <h1>Capital Inicial</h1>
+                <h2>capitalToAppend</h2>
+            </div>
+            <div class="flex justify-center items-center flex-col w-1/3">
+                <h1>Interes</h1>
+                <h2>interesToAppend</h2>
+            </div>
+            <div class="flex justify-center items-center flex-col w-1/3">
+                <h1>Capital Final</h1>
+                <h2>capitalFinalToAppend</h2>
+            </div>
+        </div>
+    </section> -->
+
+    <script>
+        import { updateFlag } from '../js/updateFlag.js';
+        import { monedaInicial, monedaFinal, symbolArray, convertCurrency } from '../js/currencies.js'
+        import { capital, tasa, inicial, final, checkbox } from '../js/interesCompuesto.js';
+
+        var generator = document.querySelector("#generator")
+        var generateIn = document.querySelector("#generateIn")
+
+        checkbox.addEventListener("change", () => {
+            if (checkbox.checked) {
+                monedaFinal.style.display = "block"
+                updateFlag(monedaFinal.value, "-")
+                return
+            }
+            updateFlag(20, "-")
+            monedaFinal.style.display = "none"          
+        })
+
+        generator.addEventListener("click", () => {
+            validateYears()
+            generateInformation()
+        })
+
+        function generateInformation() {
+            generateIn.innerHTML = ''
+            for (let index = parseInt(inicial.value)-1; index < final.value; index++) {
+
+                var capitalToAppend = (capital.value * Math.pow(1 + (tasa.value)/100, index)).toFixed(2)
+                var interesToAppend = ((capitalToAppend*tasa.value)/100).toFixed(2)
+                var capitalFinalToAppend = (capital.value * Math.pow(1 + (tasa.value)/100, parseInt(index)+1)).toFixed(2)
+                var currencySymbol = symbolArray[monedaInicial.value]
+
+                if (checkbox.checked) {
+                    capitalToAppend         = convertCurrency(capitalToAppend)
+                    interesToAppend         = convertCurrency(interesToAppend)
+                    capitalFinalToAppend    = convertCurrency(capitalFinalToAppend)
+                    currencySymbol = symbolArray[monedaFinal.value]
+                }
+
+                var toAppend = document.createElement('div');
+                toAppend.innerHTML =  
+                `
+                <section class="text-black rounded-md py-2 my-2 text-lg w-full flex-col flex
+                justify-center items-center border-2 border-[color:var(--slight-d-green)] text-white">
+                    <h1 class="font-semibold">Año #${parseInt(index)+1}</h1>
+                    <div class="w-full flex-row flex justify-center items-center gap-5">
+                        <div class="flex justify-center items-center flex-col w-1/3">
+                            <h1 class="font-semibold">Capital Inicial</h1>
+                            <h2>${capitalToAppend+" "+currencySymbol}</h2>
+                        </div>
+                        <div class="flex justify-center items-center flex-col w-1/3">
+                            <h1 class="font-semibold">Interes</h1>
+                            <h2>${interesToAppend+" "+currencySymbol}</h2>
+                        </div>
+                        <div class="flex justify-center items-center flex-col w-1/3">
+                            <h1 class="font-semibold">Capital Final</h1>
+                            <h2>${capitalFinalToAppend+" "+currencySymbol}</h2>
+                        </div>
+                    </div>
+                </section>
+                `;
+                generateIn.appendChild(toAppend);
+            }
+        }
+
+        function validateYears() {
+
+            if (isNaN(inicial.value) || inicial.value == 0) {
+                inicial.value = 1
+            }
+
+            if (isNaN(final.value) || final.value == 0) {
+                final.value = 1
+            }
+
+            if (parseInt(inicial.value > parseInt(final.value))) {
+                const oldValues = [inicial.value, final.value]
+                inicial.value = oldValues[1]
+                final.value = oldValues[0]
+            }
+
+        }
+
+    </script>
+</section>
