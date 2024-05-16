@@ -1,0 +1,24 @@
+---
+interface Props {
+	name: string;
+	currencyName: string;
+}
+
+const { name, currencyName } = Astro.props;
+---
+
+<div class="flex justify-center items-center flex-col gap-2">
+    <label for={currencyName} class="text-2xl font-semibold text-black">{name}</label>
+    <div class="flex justify-center items-center h-[74px] bg-white w-64 flex-col">
+        <slot/>
+        <select id={currencyName} class="appearance-none px-5 py-1 border-none outline-none text-xl w-full" name="currencyList" form="currencyForm">
+            <option value="0" selected>Peso Colombiano (COP)</option>
+            <option value="1">Peso Mexicano (MXN)</option>
+            <option value="2">Dolar (USD)</option>
+            <option value="3">Euro (EUR)</option>
+            <option value="4">Yen Japonés (JPY)</option>
+            <option value="5">Libra Esterlina (GBP)</option>
+            <option value="6">Yuan Chino (CNY)</option>
+        </select>
+    </div>
+</div>

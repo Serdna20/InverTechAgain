@@ -3,8 +3,8 @@
 
 <section class="w-full flex justify-center items-center flex-col">
     <section class="max-w-96 w-full flex flex-row justify-around items-center">
-        <button id="generator" class="w-1/2 border-1 border-t-0 border outline-none">Calcular / Refrescar</button>
-        <button id="cleaner" class="w-1/2 border-1 border-t-0 border outline-none">Limpiar</button>
+        <button id="generator" class="bg-[color:var(--custom-orange)] text-white w-1/2 border-1 border-t-0 border outline-none">Calcular / Refrescar</button>
+        <button id="cleaner" class="bg-[color:var(--custom-orange)] text-white w-1/2 border-1 border-t-0 border outline-none">Limpiar</button>
     </section>    
     <div id="generateIn" class="rounded-full max-w-[1270px] w-4/5 justify-center items-center flex-col">
         <!-- Se insertan aquí -->
@@ -79,7 +79,7 @@
                 toAppend.innerHTML =  
                 `
                 <section class="text-black rounded-md py-2 my-2 text-lg w-full flex-col flex
-                justify-center items-center border-2 border text-white">
+                justify-center items-center border-2 borderbg-[color:var(--custom-orange)] text-white  text-white">
                     <h1 class="font-semibold text-black">Año #${parseInt(index)+1}</h1>
                     <div class="w-full flex-row flex justify-center items-center gap-5">
                         <div class="flex justify-center items-center flex-col w-1/3">
@@ -99,6 +99,33 @@
                 `;
                 generateIn.appendChild(toAppend);
             }
+            var totalGain = document.createElement('div');
+            var moneyYearA = parseFloat((capital.value * Math.pow(1 + (tasa.value)/100, parseInt(inicial.value))))
+            var moneyI = parseFloat((capital.value * Math.pow(1 + (tasa.value)/100, 0)))
+            var moneyYearB = parseFloat((capital.value * Math.pow(1 + (tasa.value)/100, parseInt(final.value))))
+
+            if (checkbox.checked) {
+                moneyYearA = convertCurrency(moneyYearA)
+                moneyYearB = convertCurrency(moneyYearB)
+                moneyI = convertCurrency(moneyI)
+            }
+
+            moneyYearA = parseFloat((moneyYearA))
+            moneyYearB = parseFloat((moneyYearB))
+            moneyI = parseFloat((moneyI))
+
+            totalGain.innerHTML = 
+            `
+            <section class="flex flex-row justify-around items-center gap-5">
+                <div class="w-1/3 bg-[color:var(--custom-orange)] rounded p-3 text-white font-semibold">
+                    <p class="text-center">Ganancia desde el año ${inicial.value} al año ${final.value}: ${(moneyYearB-moneyYearA).toFixed(2)+" "+currencySymbol}</p>    
+                </div>
+                <div class="w-1/3 bg-[color:var(--custom-orange)] rounded p-3 text-white font-semibold">
+                    <p class="text-center">Ganancia desde el inicio hasta el año ${final.value}: ${(moneyYearB-moneyI).toFixed(2)+" "+currencySymbol}</p>
+                </div>
+            </section>
+            `
+            generateIn.appendChild(totalGain);
         }
 
         function validateYears() {
