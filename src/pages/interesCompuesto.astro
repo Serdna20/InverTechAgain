@@ -2,7 +2,7 @@
 import Footer from "../components/Footer.astro"
 import Header from "../components/Header.astro"
 import Layout from "../layouts/Layout.astro"
-import InputComp from "../components/vue/InputComp.vue"
+import PercentageInput from "../components/vue/PercentageInput.vue"
 import CustomInput from "../components/CustomInput.astro"
 import GeneradorCustom from "../components/GeneradorCustom.astro"
 import CurrencySelector from "../components/CurrencySelector.astro"
@@ -11,61 +11,69 @@ import { Icon } from "astro-icon/components"
 
 <Layout description="None" title="InverTech - Interes">
     <main class="flex justify-center items-center flex-col">
-        <div class="z-50"><Header></Header></div>        
-            <section class="flex justify-center items-center flex-col">
+        <div class="z-50">
+            <Header></Header>
+        </div>        
+            <!-- <section class="flex justify-center items-center flex-col">
                 <h1>Interes Compuesto</h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur neque consequatur voluptatem temporibus ipsam cupiditate architecto nulla praesentium natus facere?</p>
-            </section>
+            </section> -->
             <section class="m-auto w-full flex justify-center items-center flex-col">
-                <section class="max-w-[1270px] w-4/5 bg-red-300  flex flex-row items-center justify-center">                    
-                    <InputComp title="Moneda">
-                        <div class="flex justify-center items-center">
-                            <div id="hereGoesAFlag" class="w-10 h-8">
-                                <Icon name="flag:co-4x3" id="flag0" class="w-full h-full animate-bounce hidden" />
-                                <Icon name="flag:mx-4x3" id="flag1" class="w-full h-full animate-bounce hidden" />
-                                <Icon name="flag:us-4x3" id="flag2" class="w-full h-full animate-bounce hidden" />
-                                <Icon name="flag:ru-4x3" id="flag3" class="w-full h-full animate-bounce hidden" />
-                                <Icon name="flag:jp-4x3" id="flag4" class="w-full h-full animate-bounce hidden" />
-                                <Icon name="flag:gb-4x3" id="flag5" class="w-full h-full animate-bounce hidden" />
-                                <Icon name="flag:cn-4x3" id="flag6" class="w-full h-full animate-bounce hidden" />                                           
-                            </div>
+                <section class="max-w-[1270px] w-4/5 flex flex-row items-center justify-between p-3 gap-1">                    
+                    <div class="rounded border border-1 flex-row flex justify-around items-center w-1/4 h-[110px]">
+                        <div id="hereGoesAFlag" class="border-1 border w-8 h-6">
+                            <Icon name="flag:co-4x3" id="flag0" class="w-full h-full hidden" />
+                            <Icon name="flag:mx-4x3" id="flag1" class="w-full h-full hidden" />
+                            <Icon name="flag:us-4x3" id="flag2" class="w-full h-full hidden" />
+                            <Icon name="flag:ru-4x3" id="flag3" class="w-full h-full hidden" />
+                            <Icon name="flag:jp-4x3" id="flag4" class="w-full h-full hidden" />
+                            <Icon name="flag:gb-4x3" id="flag5" class="w-full h-full hidden" />
+                            <Icon name="flag:cn-4x3" id="flag6" class="w-full h-full hidden" />                                           
+                        </div>
+                        <div class="flex justify-between items-center flex-col py-4 h-full">
+                            <h1>MONEDA</h1>                           
                             <CurrencySelector currencyName="monedaInicial"></CurrencySelector>
-                        </div>                                     
-                    </InputComp>                    
-                    <InputComp title="Capital">
-                        <div class="flex justify-center items-center gap-1 flex-row-reverse">
-                            <CustomInput placeholderText="Capital" identifier="capital"></CustomInput>
-                        </div>                        
-                    </InputComp>
-                    <InputComp title="Tasa de interés (Anual)">
-                        <CustomInput placeholderText="Tasa" identifier="tasa"></CustomInput>
-                    </InputComp>
-                    <InputComp title="Año(s)">
-                        <div class="flex justify-center items-center gap-1">
+                        </div>
+                    </div>                                        
+                    <div class="rounded border border-1 w-1/4 flex flex-col justify-between py-4 h-[110px] items-center">
+                        <h1>CAPITAL INICIAL</h1>
+                        <CustomInput placeholderText="Capital" identifier="capital"></CustomInput>                    
+                    </div>
+                    <div class="rounded border border-1 w-1/4 flex flex-col justify-between py-4 h-[110px] items-center">
+                        <h1>INTERÉS</h1>
+                        <PercentageInput client:load/>
+                    </div>
+                    <div class="rounded border border-1 w-1/4 flex flex-col justify-between py-4 h-[110px] items-center">
+                        <h1>AÑOS</h1>
+                        <div class="flex justify-around w-full items-center">
                             <CustomInput placeholderText="Inicial" identifier="inicial" mediumSized></CustomInput>
                             <CustomInput placeholderText="Final" identifier="final" mediumSized></CustomInput>
                         </div>
-                    </InputComp>
+                    </div>
                 </section>
-                <section class="max-w-[1270px] w-4/5 bg-red-300  flex flex-col items-center justify-center">
-                    <label class="flex flex-row justify-center gap-2 items-center">
-                        <p>¿Desea convertir a otra moneda?</p><input type="checkbox" id="cbox1" value="first_checkbox" />
-                    </label>
-                    <div class="h-8 flex justify-center items-center">
-                        <div id="hereGoesAFlag" class="w-10 h-8">
-                            <Icon name="flag:co-4x3" id="flag-0" class="w-full h-full animate-bounce hidden" />
-                            <Icon name="flag:mx-4x3" id="flag-1" class="w-full h-full animate-bounce hidden" />
-                            <Icon name="flag:us-4x3" id="flag-2" class="w-full h-full animate-bounce hidden" />
-                            <Icon name="flag:ru-4x3" id="flag-3" class="w-full h-full animate-bounce hidden" />
-                            <Icon name="flag:jp-4x3" id="flag-4" class="w-full h-full animate-bounce hidden" />
-                            <Icon name="flag:gb-4x3" id="flag-5" class="w-full h-full animate-bounce hidden" />
-                            <Icon name="flag:cn-4x3" id="flag-6" class="w-full h-full animate-bounce hidden" />                                           
+
+                <section class="p-3 max-w-96 w-full mx-auto flex flex-col justify-center items-center border border-1">
+                    <section class="flex flex-row justify-center items-center gap-2">
+                        <p>¿Convertir a otra moneda?</p>
+                        <input type="checkbox" id="cbox1" value="first_checkbox" />
+                    </section>                    
+                    <div class="h-8 flex justify-center items-center gap-2">
+                        <div id="hereGoesAFlag" class="w-8 h-6">
+                            <Icon name="flag:co-4x3" id="flag-0" class="border-1 w-full h-full hidden" />
+                            <Icon name="flag:mx-4x3" id="flag-1" class="border-1 w-full h-full hidden" />
+                            <Icon name="flag:us-4x3" id="flag-2" class="border-1 w-full h-full hidden" />
+                            <Icon name="flag:ru-4x3" id="flag-3" class="border-1 w-full h-full hidden" />
+                            <Icon name="flag:jp-4x3" id="flag-4" class="border-1 w-full h-full hidden" />
+                            <Icon name="flag:gb-4x3" id="flag-5" class="border-1 w-full h-full hidden" />
+                            <Icon name="flag:cn-4x3" id="flag-6" class="border-1 w-full h-full hidden" />                                           
                         </div>
                         <CurrencySelector currencyName="monedaFinal"></CurrencySelector> 
-                    </div>                    
-                </section>               
+                    </div>
+                </section>            
             </section>
-            <GeneradorCustom></GeneradorCustom>
+            <div class="w-full mb-3">
+                <GeneradorCustom></GeneradorCustom>
+            </div>
         <Footer></Footer>
     </main>
     <script src="../js/interesCompuesto.js"></script>

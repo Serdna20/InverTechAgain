@@ -6,7 +6,7 @@ const { currencyName, disabled = false } = Astro.props;
     <label for={currencyName}></label>
     <div class="flex justify-center items-center bg-white flex-col">
         <slot/>
-        <select id={currencyName} disabled={disabled} class="appearance-none p-1 border-none outline-none" name="currencyList" form="currencyForm">
+        <select id={currencyName} disabled={disabled} class="appearance-none p-1 border border-1 outline-none" name="currencyList" form="currencyForm">
             <option value="0" selected>Peso Colombiano (COP)</option>
             <option value="1">Peso Mexicano (MXN)</option>
             <option value="2">Dolar (USD)</option>

@@ -17,7 +17,7 @@ const { title, description } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
+	<body class="bg-white">
 		<slot />
 	</body>
 </html>
@@ -26,6 +26,13 @@ const { title, description } = Astro.props;
 		--intense-d-green:#40513B;
 		--slight-d-green: #609966;
 		--slight-l-green:#9DC08B;
+		
+		/* New palette */
+		--blue-1: #1E0342;
+		--blue-2: #0E46A3;
+		--blue-3: #9AC8CD;
+		--blue-4: #E1F7F5;
+
 		--custom-beige: #E8DFCA;
 		--custom-white: #EDF1D6;
 		--custom-d-blue: #0d0d43;

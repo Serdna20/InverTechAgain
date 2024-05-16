@@ -1,11 +1,15 @@
 ---
-const {placeholderText, mediumSized = false, identifier} = Astro.props;
+
+const {placeholderText, mediumSized = false, identifier} = Astro.props;   
+
 ---
 
 <input type='number' id={identifier} placeholder={placeholderText} class:list={[
-    'p-1',
+    'px-2',
+    'py-1',
     'outline-none',
+    'border',
+    'border-1',
     { 'w-[80px]' : mediumSized}
 ]}
 >
-
