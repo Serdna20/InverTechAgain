@@ -10,19 +10,19 @@ import { Icon } from "astro-icon/components"
 ---
 
 <Layout description="None" title="InverTech - Interes">
-    <main class="flex justify-center items-center flex-col">
+    <main class="flex flex-col h-screen items-center">
         <div class="z-50">
             <Header></Header>
         </div>
-            <section class="max-w-[60%] w-full my-3 flex justify-center items-center flex-col gap-5">
-                <h1 class="text-3xl font-semibold">Interes Compuesto</h1>
+        <section class="max-w-[60%] w-full my-3 flex justify-center items-center flex-col gap-5">
+                <h1 class="text-3xl font-semibold">Interés Compuesto</h1>
                 <p class="text-center text-xl">Llene los siguientes campos y calcule su interés compuesto después de cierto tiempo</p>
-            </section>
+        </section>
             <!-- <section class="flex justify-center items-center flex-col">
                 <h1>Interes Compuesto</h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur neque consequatur voluptatem temporibus ipsam cupiditate architecto nulla praesentium natus facere?</p>
             </section> -->
-            <section class="m-auto w-full flex justify-center items-center flex-col">
+        <section class="mx-auto w-full flex justify-center items-center flex-col">
                 <section class="max-w-[1270px] w-4/5 flex flex-row items-center justify-between p-3 gap-1">                    
                     <div class="rounded border border-1 flex-row flex justify-around items-center w-1/4 h-[110px]">
                         <div id="hereGoesAFlag" class="border-1 border w-8 h-6">
@@ -56,7 +56,7 @@ import { Icon } from "astro-icon/components"
                     </div>
                 </section>
 
-                <section class="p-3 max-w-96 w-full mx-auto flex flex-col justify-center items-center border border-1">
+                <section class="mb-3 p-3 max-w-96 w-full mx-auto flex flex-col justify-center items-center border border-1 gap-2">
                     <section class="flex flex-row justify-center items-center gap-2">
                         <p>¿Convertir a otra moneda?</p>
                         <input type="checkbox" id="cbox1" value="first_checkbox" />
@@ -73,10 +73,10 @@ import { Icon } from "astro-icon/components"
                         </div>
                         <CurrencySelector currencyName="monedaFinal"></CurrencySelector> 
                     </div>
+                    <GeneradorCustom></GeneradorCustom>
                 </section>            
-            </section>
-            <div class="w-full mb-3">
-                <GeneradorCustom></GeneradorCustom>
+        </section>
+        <div id="generateIn" class="rounded-full max-w-[1270px] w-4/5 justify-center items-center flex-col mx-auto mb-auto">
             </div>
         <Footer></Footer>
     </main>
