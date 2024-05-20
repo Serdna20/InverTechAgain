@@ -24,7 +24,7 @@ import { Icon } from "astro-icon/components"
             </section> -->
         <section class="mx-auto w-full flex justify-center items-center flex-col">
                 <section class="max-w-[1270px] w-4/5 flex flex-row items-center justify-between p-3 gap-1">                    
-                    <div class="rounded border border-1 flex-row flex justify-around items-center w-1/4 h-[110px]">
+                    <div class="rounded border border-1 flex-row flex justify-around items-center w-1/4 h-[130px]">
                         <div id="hereGoesAFlag" class="border-1 border w-8 h-6">
                             <Icon name="flag:co-4x3" id="flag0" class="w-full h-full hidden" />
                             <Icon name="flag:mx-4x3" id="flag1" class="w-full h-full hidden" />
@@ -34,20 +34,20 @@ import { Icon } from "astro-icon/components"
                             <Icon name="flag:gb-4x3" id="flag5" class="w-full h-full hidden" />
                             <Icon name="flag:cn-4x3" id="flag6" class="w-full h-full hidden" />                                           
                         </div>
-                        <div class="flex justify-between items-center flex-col py-4 h-full">
+                        <div class="flex justify-between items-center flex-col py-8 h-full">
                             <h1>MONEDA</h1>                           
                             <CurrencySelector currencyName="monedaInicial"></CurrencySelector>
                         </div>
                     </div>                                        
-                    <div class="rounded border border-1 w-1/4 flex flex-col justify-between py-4 h-[110px] items-center">
+                    <div class="rounded border border-1 w-1/4 flex flex-col justify-between py-4 h-[130px] items-center">
                         <h1>CAPITAL INICIAL</h1>
                         <CustomInput placeholderText="Capital" identifier="capital"></CustomInput>                    
                     </div>
-                    <div class="rounded border border-1 w-1/4 flex flex-col justify-between py-4 h-[110px] items-center">
+                    <div class="rounded border border-1 w-1/4 flex flex-col justify-between py-4 h-[130px] items-center">
                         <h1>INTERÉS</h1>
                         <PercentageInput client:load/>
                     </div>
-                    <div class="rounded border border-1 w-1/4 flex flex-col justify-between py-4 h-[110px] items-center">
+                    <div class="rounded border border-1 w-1/4 flex flex-col justify-between py-4 h-[130px] items-center">
                         <h1>AÑOS</h1>
                         <div class="flex justify-around w-full items-center">
                             <CustomInput placeholderText="Inicial" identifier="inicial" mediumSized></CustomInput>
