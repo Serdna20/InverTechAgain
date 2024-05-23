@@ -15,6 +15,8 @@
     let spendings = ref(0)
     let displayResults = ref(false)
     let showGoal = ref(false)
+    let showGoalResultsB = ref(false)
+    let goalTime = ref(0)
 
     function convertCurrency(amount) {
     
@@ -49,6 +51,17 @@
 
     function goal() {
         showGoal.value = ! showGoal.value
+        showGoalResults()
+    }
+
+    function showGoalResults() {
+        showGoalResultsB.value = true
+    }
+
+    function getGoalValues() {
+        showGoalResults()
+        goalTime.value = parseFloat(document.querySelector("#goalAmount").value)/convertCurrency(totalEarnings.value)
+        document.querySelector("#goalShowResultsHere").textContent = "En " + goalTime.value.toFixed(2) +" meses usted alcanzará esa meta"
     }
 
 </script>
@@ -74,14 +87,21 @@
                 <p class="text-center font-semibold">{{ convertCurrency(totalEarnings) }} {{ returnCurrencySymbol() }}</p>
             </div>
         </section>
-        <!-- <section v-if="displayResults">
+        <section v-if="displayResults">
             <div class="flex flex-row justify-center items-center gap-2">
                 <p>¿Iniciar una meta?</p>
                 <input type="checkbox" @click="goal" id="checkbox40">
             </div>
             <div v-if="showGoal">
-                <p>Valor</p>
+                <div class="w-full flex flex-col justify-center items-center gap-3">
+                    <p class="text-center">Valor a alcanzar en <span>{{ returnCurrencySymbol() }}</span></p>
+                    <input type="number" id="goalAmount" class="w-full outline-none border px-2 py-1">
+                    <button @click="getGoalValues" class="shadow-md bg-[color:var(--custom-orange)] active:bg-orange-600 text-white w-2/5 py-2 border-1 border-t-0 border outline-none rounded">Obtener Resultados</button>
+                </div>
+                <div v-if="showGoalResults">
+                    <p id="goalShowResultsHere">Aquí aparecerán los resultados</p>
+                </div>
             </div>
-        </section>      -->
+        </section>
     </section>    
 </template>
