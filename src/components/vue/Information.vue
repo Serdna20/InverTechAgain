@@ -1,7 +1,6 @@
 <script setup>
 
     import { ref } from 'vue'
-    import MoneyList from './MoneyList.vue';
 
     const symbolArray = ["$ COP", "$ MXN", "$ USD", "€ EUR", "¥ JPY", "£ GBP", "¥ CNY"]
     const currencyArray = [3914, 17, 1, 0.9399, 156.22, 0.7986, 7.2411]
@@ -15,6 +14,7 @@
     let monthly = ref(0)
     let spendings = ref(0)
     let displayResults = ref(false)
+    let showGoal = ref(false)
 
     function convertCurrency(amount) {
     
@@ -47,10 +47,14 @@
         totalEarnings.value = parseFloat(parseFloat(parseFloat(initial.value) + parseFloat(spendings.value))+parseFloat(incomings.value))
     }
 
+    function goal() {
+        showGoal.value = ! showGoal.value
+    }
+
 </script>
 
 <template>
-    <section class="border w-4/5 p-2 flex flex-col justify-center items-center gap-5">
+    <section class="border w-4/5 p-2 flex flex-col justify-center items-center gap-5 mb-6">
         <button @click="updateValues" class="shadow-md bg-[color:var(--custom-orange)] active:bg-orange-600 text-white w-2/5 py-2 border-1 border-t-0 border outline-none rounded">Obtener informe / Refrescar</button>
         <section class="flex flex-row w-full justify-around items-center">
             <div v-if="displayResults">
@@ -69,9 +73,15 @@
                 <p v-if="displayResults" class="text-center font-bold text-lg">Terminaste con:</p>
                 <p class="text-center font-semibold">{{ convertCurrency(totalEarnings) }} {{ returnCurrencySymbol() }}</p>
             </div>
-        </section>       
-    </section>
-    <section v-if="displayResults">
-        <p>¿Iniciar una meta?</p>
-    </section>
+        </section>
+        <!-- <section v-if="displayResults">
+            <div class="flex flex-row justify-center items-center gap-2">
+                <p>¿Iniciar una meta?</p>
+                <input type="checkbox" @click="goal" id="checkbox40">
+            </div>
+            <div v-if="showGoal">
+                <p>Valor</p>
+            </div>
+        </section>      -->
+    </section>    
 </template>
