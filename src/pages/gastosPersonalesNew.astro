@@ -11,9 +11,9 @@ import CustomInput from '../components/CustomInput.astro';
 
 <Layout description='InverTech - Gastos Personales' title='InverTech - Gastos Personales'>
     <Header></Header>
-    <section class="mt-10 max-w-96 mx-auto w-full flex flex-col justify-center items-center">
-        <h1 class="text-center text-xl">Gastos Personales</h1>
-        <p class="text-center">A continuación, añada información en los siguientes campos con el fin de obtener resultados acerca de estos mismos</p>
+    <section class="mt-10 max-w-96 mx-auto w-full flex flex-col justify-center items-center gap-5">
+        <h1 class="text-center text-3xl font-semibold">Gastos Personales</h1>
+        <p class="text-center text-xl">A continuación, añada información en los siguientes campos con el fin de obtener resultados acerca de estos mismos</p>
     </section>
 
     <section class="mt-10 max-w-[1270px] w-full mx-auto flex justify-center gap-10 items-center">
@@ -26,7 +26,7 @@ import CustomInput from '../components/CustomInput.astro';
             <Icon name="flag:gb-4x3" id="flag5" class="w-full h-full hidden"/>
             <Icon name="flag:cn-4x3" id="flag6" class="w-full h-full hidden"/>
         </FlagCurrencySelector>
-        <div class="rounded border border-1 w-[25%] flex flex-row justify-around gap-3 h-[130px] items-center">
+        <div class="rounded border border-1 w-[48%] flex flex-row justify-around gap-3 h-[130px] items-center">
             <div class="w-1/2 flex flex-col justify-center items-center gap-3">
                 <h1 class="text-center font-semibold">MONTO</h1>
                 <input type="number" id="capitalInicial" autocomplete="off" class="w-4/5 outline-none border px-2 py-1">

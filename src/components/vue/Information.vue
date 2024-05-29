@@ -40,8 +40,21 @@
         displayResults.value = true
         initial.value = document.querySelector("#capitalInicial").value 
         incomings.value = document.querySelector("#salario-total").textContent
-        daily.value = document.querySelector("#diario-total").textContent
-        monthly.value = document.querySelector("#mensual-total").textContent
+
+        if (document.querySelector("#diario-total").textContent == null) {
+            daily.value = 0
+        }
+        else {
+            daily.value = document.querySelector("#diario-total").textContent 
+        }
+
+        if (document.querySelector("#diario-total").textContent == null) {
+            monthly.value = 0
+        }
+        else {
+            monthly.value = document.querySelector("#mensual-total").textContent
+        }
+
         pickedIndex.value = document.querySelector("#inicial").value
         pickedFinalIndex.value = document.querySelector("#final").value
         people.value = document.querySelector("#cantidadPersonas").value
@@ -87,7 +100,7 @@
                 <p class="text-center font-semibold">{{ convertCurrency(totalEarnings) }} {{ returnCurrencySymbol() }}</p>
             </div>
         </section>
-        <section v-if="displayResults">
+        <section v-if="displayResults && convertCurrency(totalEarnings.value)>0">
             <div class="flex flex-row justify-center items-center gap-2">
                 <p>¿Iniciar una meta?</p>
                 <input type="checkbox" @click="goal" id="checkbox40">

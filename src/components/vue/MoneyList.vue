@@ -29,11 +29,13 @@
     }
 
     function removeMoney() {
-        moneyArray.value.pop()        
-        arraySize.value = arraySize.value - 1
+        moneyArray.value.pop()
+        if (!arraySize.value == 0) {
+            arraySize.value = arraySize.value - 1
+        }        
     }
 
-    function alertArray() {
+    function showArray() {
         showingResults.value = true
         finalValue.value = 0
         maxValue.value = 0
@@ -41,12 +43,10 @@
         nameMaxValue.value = ""
         for (let index = 0; index < moneyArray.value.length; index++) {
             // alert( document.querySelector(moneyArray.value[index]).value  )
-
             let aporteMonetario = parseFloat(document.querySelector(moneyArray.value[index]).value)
             if (isNaN(aporteMonetario) || aporteMonetario.length == 0 || aporteMonetario == NaN) {
                 aporteMonetario = 0
             }
-
             if (parseFloat(document.querySelector(moneyArray.value[index]).value) > maxValue.value) {
                 maxValue.value = parseFloat(document.querySelector(moneyArray.value[index]).value)
                 indexMaxValue.value = index
@@ -93,7 +93,7 @@
             </div>            
         </div>
         <div v-if="arraySize>0" class="w-full flex justify-around gap-1 flex-col items-center">
-            <button @click="alertArray" class="shadow-md bg-[color:var(--custom-orange)] active:bg-orange-600 text-white w-4/5 border-1 border-t-0 border outline-none rounded">Mostrar/Refrescar Resultados</button>
+            <button @click="showArray" class="shadow-md bg-[color:var(--custom-orange)] active:bg-orange-600 text-white w-4/5 border-1 border-t-0 border outline-none rounded">Mostrar/Refrescar Resultados</button>
             <div v-if="showingResults">
                 <p v-if="props.idText != 'diario'">
                     {{  props.aporteGasto }} <span :id="props.idText.concat('-', 'total')">{{ finalValue*props.multiplicador }}</span> {{ symbolArray[pickedIndex] }}

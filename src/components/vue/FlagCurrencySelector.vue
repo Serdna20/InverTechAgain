@@ -16,7 +16,7 @@
 </script>
 
 <template>
-    <section class="border w-[25%] p-2 items-center gap-5
+    <section class="border w-[48%] p-2 items-center gap-5
     rounded border-1 flex-row flex justify-around h-[130px]">
         <div class="border-1 border w-8 h-6">
             <slot></slot>  
