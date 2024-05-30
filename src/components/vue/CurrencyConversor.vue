@@ -62,7 +62,7 @@
         <div class="flex flex-row justify-between items-center w-4/5 mb-10">
             <section class="flex font-semibold flex-col justify-start items-start gap-1">
                 <p class="pl-2">Cantidad</p>
-                <input v-model="valueToConvert" @change="validateValue()" type="number" class="h-10 outline-none border border-1 appearance-none px-2 py-2 w-48">
+                <input v-model="valueToConvert" @input="validateValue()" type="number" class="h-10 outline-none border border-1 appearance-none px-2 py-2 w-48">
             </section>
             <section class="flex font-semibold flex-col justify-start items-start gap-1">
                 <p class="pl-2">De:</p>
@@ -87,7 +87,7 @@
                     </select>
                 </div>                
             </section>
-            <ArrowRight></ArrowRight>
+            <!-- <ArrowRight></ArrowRight> -->
             <section class="flex font-semibold flex-col justify-start items-start gap-1">
                 <p class="pl-2">A:</p>
                 <div class="flex flex-row border border-1">

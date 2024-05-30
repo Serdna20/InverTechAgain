@@ -66,7 +66,7 @@
         </div>
         <div class="flex flex-row justify-between items-center w-4/5 mb-14 mt-2">
             <section class="flex font-semibold flex-col justify-start items-start gap-1">
-                <p class="pl-2">Cantidad Inicial</p>
+                <p class="pl-2">Inversión Inicial</p>
                 <input v-model="initialAmount" @change="validateValues()" type="number" class="h-10 outline-none border border-1 appearance-none px-2 py-2 w-48">
             </section>
             <section class="flex font-semibold flex-col justify-start items-start gap-1">
