@@ -13,6 +13,7 @@
     let maxValue = ref(0)
     let indexMaxValue = ref(0)
     let nameMaxValue = ref("")
+    let showMaxValue = ref(false)
     
     const props = defineProps({
         title: String,
@@ -26,16 +27,19 @@
     function addMoney() {
         moneyArray.value.push( "#"+props.idText.concat('-', arraySize.value+1) )
         arraySize.value = arraySize.value + 1
+        showArray()
     }
 
     function removeMoney() {
         moneyArray.value.pop()
         if (!arraySize.value == 0) {
             arraySize.value = arraySize.value - 1
-        }        
+        }
+        showArray()
     }
 
     function showArray() {
+        showMaxValue.value = false
         showingResults.value = true
         finalValue.value = 0
         maxValue.value = 0
@@ -52,6 +56,7 @@
                 indexMaxValue.value = index
                 if (props.hasName) {
                     nameMaxValue.value = document.querySelector("#"+props.idText.concat('-name-', index+1)).value
+                    showMaxValue.value = true
                 }                
             }
 
@@ -85,11 +90,11 @@
         <div v-for="(moneySections, index) in moneyArray" class="w-full flex justify-around gap-5 flex-row items-center">
             <div>
                 <p class="text-center font-semibold">{{ informationText }} #{{ index+1 }}</p>
-                <input autocomplete="off" type="number" placeholder="En blanco para cero" :id="props.idText.concat('-', index+1)" class="w-full outline-none border px-2 py-1">
+                <input autocomplete="off" type="number" @change="showArray()" placeholder="En blanco para cero" :id="props.idText.concat('-', index+1)" class="w-full outline-none border px-2 py-1">
             </div>
             <div v-if="props.hasName">
                 <p class="text-center font-semibold">Nombre #{{ index+1 }}</p>
-                <input autocomplete="off" type="text" placeholder="Nombre su gasto" :id="props.idText.concat('-name-', index+1)" class="w-full outline-none border px-2 py-1">
+                <input autocomplete="off" type="text" @change="showArray()" placeholder="Nombre su gasto" :id="props.idText.concat('-name-', index+1)" class="w-full outline-none border px-2 py-1">
             </div>            
         </div>
         <div v-if="arraySize>0" class="w-full flex justify-around gap-1 flex-col items-center">
@@ -101,7 +106,7 @@
                 <p v-if="props.idText == 'diario'">
                     {{  props.aporteGasto }} <span :id="props.idText.concat('-', 'total')">{{ finalValue*props.multiplicador*peopleAmount }}</span> {{ symbolArray[pickedIndex] }}
                 </p>
-                <p v-if="props.hasName">Mayor de los {{ props.aporteGasto.toLowerCase() }} {{ nameMaxValue }}</p>
+                <p v-if="props.hasName && showMaxValue">Mayor de los {{ props.aporteGasto.toLowerCase() }} {{ nameMaxValue }}</p>
             </div>
         </div>
     </section>

@@ -27,6 +27,8 @@
         return (amount*currencyArray[pickedFinalIndex.value]/currencyArray[pickedIndex.value]).toFixed(2)
     }
 
+    
+
     function returnCurrencySymbol() {
         if (!(pickedFinalIndex.value == pickedIndex.value)){
             return symbolArray[pickedFinalIndex.value]
@@ -39,16 +41,22 @@
     function updateValues() {
         displayResults.value = true
         initial.value = document.querySelector("#capitalInicial").value 
-        incomings.value = document.querySelector("#salario-total").textContent
+        
+        if (document.querySelector("#salario-total") == null) {
+            incomings.value = 0
+        }
+        else {
+            incomings.value = document.querySelector("#salario-total").textContent
+        }
 
-        if (document.querySelector("#diario-total").textContent == null) {
+        if (document.querySelector("#diario-total") == null) {
             daily.value = 0
         }
         else {
             daily.value = document.querySelector("#diario-total").textContent 
         }
 
-        if (document.querySelector("#diario-total").textContent == null) {
+        if (document.querySelector("#mensual-total") == null) {
             monthly.value = 0
         }
         else {
