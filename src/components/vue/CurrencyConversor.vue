@@ -15,19 +15,36 @@
     let valueToConvert = ref(0)    
     let valueConverted = ref(0)
     
+    let initial1Final = ref(0)
+    let final1Initial = ref(0)
+    let stored1 = ref(1)
+
+    let initialSymbol = ref('')
+    let finalSymbol = ref('')
 
     function validateValue() {
         if (valueToConvert.value < 0) {
             valueToConvert.value = 0
         }
+
         valueToDisplay.value = valueToConvert.value
-        initialName = currencyNames[initialCurrency.value]  
-        finalName = currencyNames[finalCurrency.value]  
-        valueConverted.value = convertCurrency(valueToConvert)
+        valueConverted.value = convertCurrency(valueToConvert).toFixed(3)
+
+        initialName.value = currencyNames[initialCurrency.value]
+        finalName.value = currencyNames[finalCurrency.value]
+        initialSymbol.value = symbolArray[initialCurrency.value]
+        finalSymbol.value = symbolArray[finalCurrency.value]
+        
+        initial1Final.value = convertCurrency(stored1)
+        final1Initial.value = convertCurrency11(stored1)
     }
 
     function convertCurrency(amount) {
         return (amount.value*currencyArray[finalCurrency.value]/currencyArray[initialCurrency.value])
+    }
+
+    function convertCurrency11(amount) {
+        return (amount.value*currencyArray[initialCurrency.value]/currencyArray[finalCurrency.value])
     }
 
 </script>
@@ -65,9 +82,11 @@
                 </select>
             </section>
         </div>
-        <div v-if="valueToDisplay" class="pl-2 flex flex-col justify-start items-start w-4/5">
-            <h2 class="text-opacity-50">{{ valueToDisplay }} {{ initialName }} =</h2>
-            <h1 class="text-xl">{{ valueConverted }} {{ finalName }}</h1>
+        <div v-if="valueToDisplay" class="pl-2 flex flex-col justify-start items-start w-4/5 gap-2">
+            <h2 class="">{{ valueToDisplay }} {{ initialName }} =</h2>
+            <h1 class="text-2xl font-bold font-sans">{{ valueConverted }} {{ finalName }}</h1>
+            <h1 v-if="finalSymbol != initialSymbol" class="text-sm text-slate-500">1 {{ initialSymbol }} = {{ initial1Final }} {{ finalSymbol }}</h1>
+            <h1 v-if="finalSymbol != initialSymbol" class="text-sm text-slate-500">1 {{ finalSymbol }} = {{ final1Initial }} {{ initialSymbol }}</h1>
         </div>
     </section>
 </template>
