@@ -10,78 +10,86 @@ import CustomInput from '../components/CustomInput.astro';
 ---
 
 <Layout description='InverTech - Gastos Personales' title='InverTech - Gastos Personales'>
-    <Header></Header>
-    <section class="mt-10 max-w-96 mx-auto w-full flex flex-col justify-center items-center gap-5">
-        <h1 class="text-center text-3xl font-semibold">Gastos Personales</h1>
-        <p class="text-center text-xl">A continuación, añada información en los siguientes campos con el fin de obtener resultados acerca de estos mismos</p>
-    </section>
+    <section class="w-full flex justify-center items-center">
+        <section class="w-4/5 max-w-6xl h-4/5 my-14 rounded-md shadow-2xl shadow-slate-300 flex flex-col justify-center items-center">
+            <section class="w-full flex justify-center items-center flex-col gap-3 mb-auto">
 
-    <section class="mt-10 max-w-[1270px] w-full mx-auto flex justify-center gap-10 items-center">
-        <FlagCurrencySelector titulo="MONEDA INICIAL" idSelect='inicial' separador='' client:load>
-            <Icon name="flag:co-4x3" id="flag0" class="w-full h-full block"/>
-            <Icon name="flag:mx-4x3" id="flag1" class="w-full h-full hidden"/>
-            <Icon name="flag:us-4x3" id="flag2" class="w-full h-full hidden"/>
-            <Icon name="flag:ru-4x3" id="flag3" class="w-full h-full hidden"/>
-            <Icon name="flag:jp-4x3" id="flag4" class="w-full h-full hidden"/>
-            <Icon name="flag:gb-4x3" id="flag5" class="w-full h-full hidden"/>
-            <Icon name="flag:cn-4x3" id="flag6" class="w-full h-full hidden"/>
-        </FlagCurrencySelector>
-        <div class="rounded border border-1 w-[48%] flex flex-row justify-around gap-3 h-[130px] items-center">
-            <div class="w-1/2 flex flex-col justify-center items-center gap-3">
-                <h1 class="text-center font-semibold">MONTO</h1>
-                <input type="number" id="capitalInicial" autocomplete="off" class="w-4/5 outline-none border px-2 py-1">
-            </div>
-            <div class="w-1/2 flex flex-col justify-center items-center gap-3">
-                <h1 class="text-center font-semibold">PERSONAS</h1>
-                <input type="number" id="cantidadPersonas" autocomplete="off" class="w-4/5 outline-none border px-2 py-1">
-            </div>                               
-        </div>
-    </section>    
+                <h1 class="flex justify-center items-center rounded-md h-32 rounded-t
+                            rounded-b-none w-full text-3xl text-center text-white
+                            font-bold bg-[color:var(--custom-d-blue)]">
+                            Gastos Personales
+                </h1>
 
-    <section class="mt-10 max-w-[1270px] w-full mx-auto">
-        <section class="max-w-[1270px] w-full flex flex-row justify-around items-start">
-            <MoneyList 
-                aporteGasto='Aportes:' 
-                title="Salarios" 
-                informationText="Salario" 
-                idText="salario" hasName={false} 
-                multiplicador={1}
-                client:only
-            />
-            <MoneyList 
-                aporteGasto='Gastos:' 
-                title="Gastos Diarios" 
-                informationText="Gasto Diario" 
-                idText="diario" hasName={true} 
-                multiplicador={-30}
-                client:only
-            />
-            <MoneyList 
-                aporteGasto='Gastos:' 
-                title="Gastos Mensuales" 
-                informationText="Gasto Mensual" 
-                idText="mensual" hasName={true} 
-                multiplicador={-1}
-                client:only
-            />
+                <p class="w-3/5 mt-10 text-lg text-center font-semibold text-slate-600 italic">
+                    A continuación, añada información en los siguientes campos con el fin de obtener resultados acerca de estos mismos
+                </p>
+            </section>
+            <section class="mt-10 max-w-[1270px] w-full mx-auto flex justify-center gap-10 items-center">
+                <FlagCurrencySelector titulo="MONEDA INICIAL" idSelect='inicial' separador='' client:load>
+                    <Icon name="flag:co-4x3" id="flag0" class="w-full h-full block"/>
+                    <Icon name="flag:mx-4x3" id="flag1" class="w-full h-full hidden"/>
+                    <Icon name="flag:us-4x3" id="flag2" class="w-full h-full hidden"/>
+                    <Icon name="flag:ru-4x3" id="flag3" class="w-full h-full hidden"/>
+                    <Icon name="flag:jp-4x3" id="flag4" class="w-full h-full hidden"/>
+                    <Icon name="flag:gb-4x3" id="flag5" class="w-full h-full hidden"/>
+                    <Icon name="flag:cn-4x3" id="flag6" class="w-full h-full hidden"/>
+                </FlagCurrencySelector>
+                <div class="rounded w-[48%] flex flex-row justify-around gap-3 h-[130px] items-center">
+                    <div class="w-1/2 flex flex-col justify-center items-center gap-3">
+                        <h1 class="text-center font-semibold">MONTO</h1>
+                        <input type="number" id="capitalInicial" autocomplete="off" class="w-4/5 outline-none border px-2 py-1">
+                    </div>
+                    <div class="w-1/2 flex flex-col justify-center items-center gap-3">
+                        <h1 class="text-center font-semibold">PERSONAS</h1>
+                        <input type="number" id="cantidadPersonas" autocomplete="off" class="w-4/5 outline-none border px-2 py-1">
+                    </div>                               
+                </div>
+            </section>    
+        
+            <section class="mt-10 max-w-[1270px] w-full mx-auto">
+                <section class="max-w-[1270px] w-full flex flex-row justify-around items-start">
+                    <MoneyList 
+                        aporteGasto='Aportes:' 
+                        title="Salarios" 
+                        informationText="Salario" 
+                        idText="salario" hasName={false} 
+                        multiplicador={1}
+                        client:only
+                    />
+                    <MoneyList 
+                        aporteGasto='Gastos:' 
+                        title="Gastos Diarios" 
+                        informationText="Gasto Diario" 
+                        idText="diario" hasName={true} 
+                        multiplicador={-30}
+                        client:only
+                    />
+                    <MoneyList 
+                        aporteGasto='Gastos:' 
+                        title="Gastos Mensuales" 
+                        informationText="Gasto Mensual" 
+                        idText="mensual" hasName={true} 
+                        multiplicador={-1}
+                        client:only
+                    />
+                </section>
+            </section>    
+        
+            <section class="mt-10 max-w-[1270px] w-full mx-auto flex justify-center items-center">
+                <FlagCurrencySelector titulo="MONEDA FINAL (Opcional)" idSelect='final' separador='-' client:load>
+                    <Icon name="flag:co-4x3" id="flag-0" class="w-full h-full block"/>
+                    <Icon name="flag:mx-4x3" id="flag-1" class="w-full h-full hidden"/>
+                    <Icon name="flag:us-4x3" id="flag-2" class="w-full h-full hidden"/>
+                    <Icon name="flag:ru-4x3" id="flag-3" class="w-full h-full hidden"/>
+                    <Icon name="flag:jp-4x3" id="flag-4" class="w-full h-full hidden"/>
+                    <Icon name="flag:gb-4x3" id="flag-5" class="w-full h-full hidden"/>
+                    <Icon name="flag:cn-4x3" id="flag-6" class="w-full h-full hidden"/>
+                </FlagCurrencySelector>
+            </section>
+        
+            <section class="mt-10 max-w-[1270px] w-full mx-auto flex justify-center items-center">
+                <Information client:only></Information>
+            </section>
         </section>
-    </section>    
-
-    <section class="mt-10 max-w-[1270px] w-full mx-auto flex justify-center items-center">
-        <FlagCurrencySelector titulo="MONEDA FINAL (Opcional)" idSelect='final' separador='-' client:load>
-            <Icon name="flag:co-4x3" id="flag-0" class="w-full h-full block"/>
-            <Icon name="flag:mx-4x3" id="flag-1" class="w-full h-full hidden"/>
-            <Icon name="flag:us-4x3" id="flag-2" class="w-full h-full hidden"/>
-            <Icon name="flag:ru-4x3" id="flag-3" class="w-full h-full hidden"/>
-            <Icon name="flag:jp-4x3" id="flag-4" class="w-full h-full hidden"/>
-            <Icon name="flag:gb-4x3" id="flag-5" class="w-full h-full hidden"/>
-            <Icon name="flag:cn-4x3" id="flag-6" class="w-full h-full hidden"/>
-        </FlagCurrencySelector>
     </section>
-
-    <section class="mt-10 max-w-[1270px] w-full mx-auto flex justify-center items-center">
-        <Information client:only></Information>
-    </section>
-
-    <Footer></Footer>
 </Layout>

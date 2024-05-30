@@ -80,8 +80,8 @@
 </script>
 
 <template>
-    <section class="border w-4/5 p-2 flex flex-col justify-center items-center gap-5 mb-6">
-        <button @click="updateValues" class="shadow-md bg-[color:var(--custom-orange)] active:bg-orange-600 text-white w-2/5 py-2 border-1 border-t-0 border outline-none rounded">Obtener informe / Refrescar</button>
+    <section class="w-4/5 p-2 flex flex-col justify-center items-center gap-5 mb-6">
+        <button @click="updateValues" class="shadow-md bg-[color:var(--custom-orange)] active:bg-orange-600 text-white w-2/5 py-2 outline-none rounded">Obtener informe / Refrescar</button>
         <section class="flex flex-row w-full justify-around items-center">
             <div v-if="displayResults">
                 <p v-if="displayResults" class="text-center font-bold text-lg">Iniciaste con:</p>
@@ -108,8 +108,8 @@
             <div v-if="showGoal">
                 <div class="w-full flex flex-col justify-center items-center gap-3">
                     <p class="text-center">Valor a alcanzar en <span>{{ returnCurrencySymbol() }}</span></p>
-                    <input type="number" id="goalAmount" class="w-full outline-none border px-2 py-1">
-                    <button @click="getGoalValues" class="shadow-md bg-[color:var(--custom-orange)] active:bg-orange-600 text-white w-2/5 py-2 border-1 border-t-0 border outline-none rounded">Obtener Resultados</button>
+                    <input type="number" id="goalAmount" class="w-full outline-none px-2 py-1">
+                    <button @click="getGoalValues" class="shadow-md bg-[color:var(--custom-orange)] active:bg-orange-600 text-white w-2/5 py-2 outline-none rounded">Obtener Resultados</button>
                 </div>
                 <div v-if="showGoalResults">
                     <p id="goalShowResultsHere">Aquí aparecerán los resultados</p>

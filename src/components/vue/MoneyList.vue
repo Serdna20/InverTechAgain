@@ -76,11 +76,11 @@
 </script>
 
 <template>
-    <section class="border w-[32%] p-2 flex flex-col justify-center items-center gap-5">
+    <section class="w-[32%] p-2 flex flex-col justify-center items-center gap-5">
         <h1 class="text-center font-semibold">{{  title.toUpperCase() }}</h1>
         <div class="flex flex-row w-full justify-around items-center">
-            <button @click="addMoney" class="shadow-md bg-[color:var(--custom-orange)] active:bg-orange-600 text-white w-2/5 border-1 border-t-0 border outline-none rounded">Agregar</button>
-            <button @click="removeMoney" class="shadow-md bg-[color:var(--custom-orange)] active:bg-orange-600 text-white w-2/5 border-1 border-t-0 border outline-none rounded">Remover</button>
+            <button @click="addMoney" class="shadow-md bg-[color:var(--custom-orange)] active:bg-orange-600 text-white w-2/5 outline-none rounded">Agregar</button>
+            <button @click="removeMoney" class="shadow-md bg-[color:var(--custom-orange)] active:bg-orange-600 text-white w-2/5 outline-none rounded">Remover</button>
         </div>
         <div v-for="(moneySections, index) in moneyArray" class="w-full flex justify-around gap-5 flex-row items-center">
             <div>
@@ -93,7 +93,7 @@
             </div>            
         </div>
         <div v-if="arraySize>0" class="w-full flex justify-around gap-1 flex-col items-center">
-            <button @click="showArray" class="shadow-md bg-[color:var(--custom-orange)] active:bg-orange-600 text-white w-4/5 border-1 border-t-0 border outline-none rounded">Mostrar/Refrescar Resultados</button>
+            <button @click="showArray" class="shadow-md bg-[color:var(--custom-orange)] active:bg-orange-600 text-white w-4/5 outline-none rounded">Mostrar/Refrescar Resultados</button>
             <div v-if="showingResults">
                 <p v-if="props.idText != 'diario'">
                     {{  props.aporteGasto }} <span :id="props.idText.concat('-', 'total')">{{ finalValue*props.multiplicador }}</span> {{ symbolArray[pickedIndex] }}
