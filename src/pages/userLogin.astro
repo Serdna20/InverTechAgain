@@ -1,0 +1,34 @@
+---
+import { Icon } from "astro-icon/components";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="InverTech - Login" description="InverTech - Opciones">
+	<section class="w-full h-[100vh] flex justify-center items-center">
+        <section class="w-[35%] h-[90%] flex flex-col rounded-md justify-center items-center shadow-2xl shadow-slate-300">
+            <h1 class="select-none w-3/5 h-1/6 flex justify-center items-center text-center text-4xl font-bold gap-2">
+                Bienvenido
+            </h1>                
+            <h2 class="w-3/5 text-xl font-semibold text-center mb-20">Elija su rol</h2>
+
+            <section class="w-3/5  text-slate-400 text-center flex flex-row justify-center items-center gap-2 mb-3">
+                <div class="w-[22%] h-[1px] bg-slate-300"></div>
+                <p class="w-[54%] text-center text-sm">Roles a elegir</p>
+                <div class="w-[22%] h-[1px] bg-slate-300"></div>
+            </section>
+
+            <div class="w-3/5 flex flex-col justify-center items-center gap-4 mb-20">
+                <a href="/selectAction" class="text-center flex items-center justify-center text-white bg-[color:var(--custom-orange)] w-full h-[38px] shadow-md active:bg-orange-700">
+                    Estudiante
+                </a>
+                <a href="/selectAction" class="text-center flex items-center justify-center text-white bg-[color:var(--custom-orange)] w-full h-[38px] shadow-md active:bg-orange-700">
+                    Docente
+                </a>                    
+                <a href="/selectAction" class="text-center flex items-center justify-center text-white bg-[color:var(--custom-orange)] w-full h-[38px] shadow-md active:bg-orange-700">
+                    Administrador
+                </a>                    
+            </div>            
+            <a href="./" class="w-3/5 text-right text-[color:var(--custom-orange)] text-sm">Regresar al inicio...</a>
+        </section>
+    </section>
+</Layout>
