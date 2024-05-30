@@ -1,12 +1,14 @@
 <script>
 export default {
-	name: 'TwemojiFlagColombia',
+	name: 'FlagCo4x3',
 };
 </script>
 <template>
-	<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 36 36">
-		<path fill="#fbd116" d="M32 5H4a4 4 0 0 0-4 4v9h36V9a4 4 0 0 0-4-4" />
-		<path fill="#22408c" d="M0 18h36v7H0z" />
-		<path fill="#ce2028" d="M0 27a4 4 0 0 0 4 4h28a4 4 0 0 0 4-4v-2H0z" />
+	<svg xmlns="http://www.w3.org/2000/svg" width="3.35rem" height="2.5rem" viewBox="0 0 640 480">
+		<g fill-rule="evenodd" stroke-width="1">
+			<path fill="#ffe800" d="M0 0h640v480H0z" />
+			<path fill="#00148e" d="M0 240h640v240H0z" />
+			<path fill="#da0010" d="M0 360h640v120H0z" />
+		</g>
 	</svg>
 </template>

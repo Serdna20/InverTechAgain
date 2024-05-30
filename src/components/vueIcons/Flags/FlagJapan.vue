@@ -1,11 +1,18 @@
 <script>
 export default {
-	name: 'TwemojiFlagJapan',
+	name: 'FlagJp4x3',
 };
 </script>
 <template>
-	<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 36 36">
-		<path fill="#eee" d="M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4z" />
-		<circle cx="18" cy="18" r="7" fill="#ed1b2f" />
+	<svg xmlns="http://www.w3.org/2000/svg" width="3.35rem" height="2.5rem" viewBox="0 0 640 480">
+		<defs>
+			<clipPath id="flagJp4x30">
+				<path fill-opacity="0.7" d="M-88 32h640v480H-88z" />
+			</clipPath>
+		</defs>
+		<g fill-rule="evenodd" stroke-width="1" clip-path="url(#flagJp4x30)" transform="translate(88 -32)">
+			<path fill="#fff" d="M-128 32h720v480h-720z" />
+			<circle cx="523.1" cy="344.1" r="194.9" fill="#bc002d" transform="translate(-168.4 8.6)scale(.76554)" />
+		</g>
 	</svg>
 </template>

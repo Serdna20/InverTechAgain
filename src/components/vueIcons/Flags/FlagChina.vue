@@ -1,16 +1,18 @@
 <script>
 export default {
-	name: 'OpenmojiFlagChina',
+	name: 'FlagCn4x3',
 };
 </script>
 <template>
-	<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 72 72">
-		<path fill="#d22f27" d="M5 17h62v38H5z" />
-		<circle cx="24" cy="34" r="1.75" fill="#f1b31c" />
-		<circle cx="24" cy="24" r="1.75" fill="#f1b31c" />
-		<circle cx="28" cy="31" r="1.75" fill="#f1b31c" />
-		<circle cx="28" cy="26" r="1.75" fill="#f1b31c" />
-		<path fill="#f1b31c" stroke="#f1b31c" stroke-linecap="round" stroke-linejoin="round" d="m13.528 32.445l2.472-8l2.473 8L12 27.5h8z" />
-		<path fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 17h62v38H5z" />
+	<svg xmlns="http://www.w3.org/2000/svg" width="3.35rem" height="2.5rem" viewBox="0 0 640 480">
+		<defs>
+			<path id="flagCn4x30" fill="#ff0" d="M-.6.8L0-1L.6.8L-1-.3h2z" />
+		</defs>
+		<path fill="#ee1c25" d="M0 0h640v480H0z" />
+		<use width="30" height="20" href="#flagCn4x30" transform="matrix(71.9991 0 0 72 120 120)" />
+		<use width="30" height="20" href="#flagCn4x30" transform="matrix(-12.33562 -20.5871 20.58684 -12.33577 240.3 48)" />
+		<use width="30" height="20" href="#flagCn4x30" transform="matrix(-3.38573 -23.75998 23.75968 -3.38578 288 95.8)" />
+		<use width="30" height="20" href="#flagCn4x30" transform="matrix(6.5991 -23.0749 23.0746 6.59919 288 168)" />
+		<use width="30" height="20" href="#flagCn4x30" transform="matrix(14.9991 -18.73557 18.73533 14.99929 240 216)" />
 	</svg>
 </template>

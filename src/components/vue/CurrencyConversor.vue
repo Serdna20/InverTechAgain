@@ -1,5 +1,13 @@
 <script setup>
     import ArrowRight from '../vueIcons/ArrowRight.vue';
+    import FlagColombia from "../vueIcons/Flags/FlagColombia.vue";
+    import FlagMexico from "../vueIcons/Flags/FlagMexico.vue";
+    import FlagUnitedStates from "../vueIcons/Flags/FlagUnitedStates.vue";
+    import FlagEuropean from "../vueIcons/Flags/FlagEuropean.vue";
+    import FlagJapan from "../vueIcons/Flags/FlagJapan.vue";
+    import FlagUnitedKingdom from "../vueIcons/Flags/FlagUnitedKingdom.vue";
+    import FlagChina from "../vueIcons/Flags/FlagChina.vue";
+
     import { ref } from 'vue'
 
     const symbolArray = ["$ COP", "$ MXN", "$ USD", "€ EUR", "¥ JPY", "£ GBP", "¥ CNY"]
@@ -52,34 +60,56 @@
 <template>
     <section class="w-full flex flex-col justify-center items-center">
         <div class="flex flex-row justify-between items-center w-4/5 mb-10">
-            <section class="flex font-semibold flex-col justify-start items-start">
+            <section class="flex font-semibold flex-col justify-start items-start gap-1">
                 <p class="pl-2">Cantidad</p>
                 <input v-model="valueToConvert" @change="validateValue()" type="number" class="h-10 outline-none border border-1 appearance-none pl-2 py-2 w-48">
             </section>
-            <section class="flex font-semibold flex-col justify-start items-start">
+            <section class="flex font-semibold flex-col justify-start items-start gap-1">
                 <p class="pl-2">De:</p>
-                <select v-model="initialCurrency" @change="validateValue()" class="appearance-none h-10 border border-1 outline-none pl-2 py-2 w-48" name="currencyList" form="currencyForm">
-                    <option value="0">Peso Colombiano (COP)</option>
-                    <option value="1">Peso Mexicano (MXN)</option>
-                    <option value="2">Dolar (USD)</option>
-                    <option value="3">Euro (EUR)</option>
-                    <option value="4">Yen Japonés (JPY)</option>
-                    <option value="5">Libra Esterlina (GBP)</option>
-                    <option value="6">Yuan Chino (CNY)</option>
-                </select>
+                <div class="flex flex-row border border-1">
+                    <section>
+                        <FlagColombia v-if="initialCurrency==0"></FlagColombia>
+                        <FlagMexico v-if="initialCurrency==1"></FlagMexico>
+                        <FlagUnitedStates v-if="initialCurrency==2"></FlagUnitedStates>
+                        <FlagEuropean v-if="initialCurrency==3"></FlagEuropean>
+                        <FlagJapan v-if="initialCurrency==4"></FlagJapan>
+                        <FlagUnitedKingdom v-if="initialCurrency==5"></FlagUnitedKingdom>
+                        <FlagChina v-if="initialCurrency==6"></FlagChina>
+                    </section>
+                    <select v-model="initialCurrency" @change="validateValue()" class="appearance-none h-10 outline-none pl-2 py-2 w-48" name="currencyList" form="currencyForm">
+                        <option value="0">Peso Colombiano (COP)</option>
+                        <option value="1">Peso Mexicano (MXN)</option>
+                        <option value="2">Dolar (USD)</option>
+                        <option value="3">Euro (EUR)</option>
+                        <option value="4">Yen Japonés (JPY)</option>
+                        <option value="5">Libra Esterlina (GBP)</option>
+                        <option value="6">Yuan Chino (CNY)</option>
+                    </select>
+                </div>                
             </section>
             <ArrowRight></ArrowRight>
-            <section class="flex font-semibold flex-col justify-start items-start">
+            <section class="flex font-semibold flex-col justify-start items-start gap-1">
                 <p class="pl-2">A:</p>
-                <select v-model="finalCurrency" @change="validateValue()" class="appearance-none h-10 border border-1 outline-none pl-2 py-2 w-48" name="currencyList" form="currencyForm">
-                    <option value="0">Peso Colombiano (COP)</option>
-                    <option value="1">Peso Mexicano (MXN)</option>
-                    <option value="2">Dolar (USD)</option>
-                    <option value="3">Euro (EUR)</option>
-                    <option value="4">Yen Japonés (JPY)</option>
-                    <option value="5">Libra Esterlina (GBP)</option>
-                    <option value="6">Yuan Chino (CNY)</option>
-                </select>
+                <div class="flex flex-row border border-1">
+                    <section>
+                        <FlagColombia v-if="finalCurrency==0"></FlagColombia>
+                        <FlagMexico v-if="finalCurrency==1"></FlagMexico>
+                        <FlagUnitedStates v-if="finalCurrency==2"></FlagUnitedStates>
+                        <FlagEuropean v-if="finalCurrency==3"></FlagEuropean>
+                        <FlagJapan v-if="finalCurrency==4"></FlagJapan>
+                        <FlagUnitedKingdom v-if="finalCurrency==5"></FlagUnitedKingdom>
+                        <FlagChina v-if="finalCurrency==6"></FlagChina>
+                    </section>
+                    <select v-model="finalCurrency" @change="validateValue()" class="appearance-none h-10 border border-1 outline-none pl-2 py-2 w-48" name="currencyList" form="currencyForm">
+                        <option value="0">Peso Colombiano (COP)</option>
+                        <option value="1">Peso Mexicano (MXN)</option>
+                        <option value="2">Dolar (USD)</option>
+                        <option value="3">Euro (EUR)</option>
+                        <option value="4">Yen Japonés (JPY)</option>
+                        <option value="5">Libra Esterlina (GBP)</option>
+                        <option value="6">Yuan Chino (CNY)</option>
+                    </select>
+                </div>                
             </section>
         </div>
         <div v-if="valueToDisplay" class="pl-2 flex flex-col justify-start items-start w-4/5 gap-2">

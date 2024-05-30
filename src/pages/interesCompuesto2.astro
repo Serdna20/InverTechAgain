@@ -1,5 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+import CompoundInterest from "../components/vue/CompoundInterest.vue";
 import { Icon } from 'astro-icon/components';
 ---
 
@@ -14,13 +16,14 @@ import { Icon } from 'astro-icon/components';
                     Interés Compuesto
                 </h1>
 
-                <p class="w-3/5 text-lg text-center font-semibold">
+                <p class="w-3/5 text-lg text-center font-semibold italic">
                     El interés compuesto es el monto de un capital al que se van
                     acumulando sus créditos o intereses para que produzcan otros.
                     El interés compuesto permite la capitalización de intereses
                     periódicamente: día a día, mes a mes, etc.
                 </p>
             </section>
+            <CompoundInterest></CompoundInterest>
         </section>
     </section>
 </Layout>
