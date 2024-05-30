@@ -1,25 +1,26 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 import { Icon } from 'astro-icon/components';
-import CurrencyConversor from '../components/vue/CurrencyConversor.vue';
 ---
 
-<Layout title="InverTech - Conversor" description="InverTech - Conversor de monedas">
+<Layout title="InverTech - Login" description="InverTech - Inicia Sesión">
     <section class="w-full h-screen flex justify-center items-center">
         <section class="w-4/5 max-w-6xl h-4/5 my-14 rounded-md shadow-2xl shadow-slate-300">
-            <section class="w-full flex justify-center items-center flex-col mb-10 gap-3">
+            <section class="w-full flex justify-center items-center flex-col">
 
                 <h1 class="flex justify-center items-center rounded-md h-32 rounded-t
                             rounded-b-none w-full text-2xl text-center text-white
                             font-semibold bg-[color:var(--custom-d-blue)]">
-                            Conversor de Monedas
+                    Interés Compuesto
                 </h1>
 
                 <p class="text-lg text-center">
-                    Elije entre 7 distintas monedas para realizar una conversión
+                    El interés compuesto es el monto de un capital al que se van
+                    acumulando sus créditos o intereses para que produzcan otros.
+                    El interés compuesto permite la capitalización de intereses
+                    periódicamente: día a día, mes a mes, etc.
                 </p>
             </section>
-            <CurrencyConversor client:load></CurrencyConversor>
         </section>
     </section>
 </Layout>
