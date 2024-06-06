@@ -22,23 +22,24 @@
     console.log((await currencies).data)
     let currencyArray = [3858.18, 16.96, (await piss).completed, 0.93, 157.41, 0.79, 7.27]
     */
-
-    let currencies = fetch('https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_cu9ALjtelMIWHFAQCYLrNZ4iSjz0EgnxCcWeSPxX')
+   
+    const apiURL = 'https://api.fastforex.io/fetch-all?api_key=30cc10ae2c-0e290dbfba-sen4t9'
+    let currencies = fetch(apiURL)
     .then(response => response.json())
     .then(function(dataReceived) {
         return dataReceived
     })
 
     let currencyArray = [
-        3858.18,
-        (await currencies).data.MXN,
+        (await currencies).results.COP,
+        (await currencies).results.MXN,
         1,
-        (await currencies).data.EUR,
-        (await currencies).data.JPY,
-        (await currencies).data.GBP,
-        (await currencies).data.CNY
+        (await currencies).results.EUR,
+        (await currencies).results.JPY,
+        (await currencies).results.GBP,
+        (await currencies).results.CNY
     ]
-    
+
     const symbolArray = ["$ COP", "$ MXN", "$ USD", "€ EUR", "¥ JPY", "£ GBP", "¥ CNY"]
     const currencyNames = ["Pesos Colombianos", "Pesos Mexicanos", "Dólares Estadounidenses", "Euros", "Yenes Japoneses", "Libras Esterlinas", "Yuanes Chinos"]
 
