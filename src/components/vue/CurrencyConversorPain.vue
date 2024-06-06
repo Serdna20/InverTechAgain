@@ -9,41 +9,59 @@
     import FlagChina from "../vueIcons/Flags/FlagChina.vue";
 
     import { ref } from 'vue'
-    
-    // OLD OLD OLD
-    // DON'T READ THIS
-    /* let piss = fetch('https://jsonplaceholder.typicode.com/todos/1')
-    .then(response => response.json())
-    .then(function(n) {
-        return n
-    })    
 
-    // console.log((await piss).completed)
-    console.log((await currencies).data)
-    let currencyArray = [3858.18, 16.96, (await piss).completed, 0.93, 157.41, 0.79, 7.27]
-    */
+    // TRYING to do api stuff
 
-    let currencies = fetch('https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_cu9ALjtelMIWHFAQCYLrNZ4iSjz0EgnxCcWeSPxX')
-    .then(response => response.json())
-    .then(function(dataReceived) {
-        return dataReceived
+    // import axios from "axios";
+
+    // let currencies = []
+
+    // axios.get("https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_cu9ALjtelMIWHFAQCYLrNZ4iSjz0EgnxCcWeSPxX").then((response) => {
+    //     currencies.value = response.data.data
+    // });
+    // console.log("hi")
+    // console.log(currencies.value)
+
+
+    // axios.get("https://reqres.in/api/users?page=1").then((response) => {
+        
+    //     let currencies = response.data.data
+    //     for (const key in currencies) {
+    //         console.log(currencies[1].email)
+    //     }
+    // });
+
+    let infoStored
+
+
+    // fetch('https://jsonplaceholder.typicode.com/posts/1')
+    // .then((response) => response.json())
+    // .then((json) => console.log(json.title))
+
+
+    var obj;
+
+    fetch('https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_cu9ALjtelMIWHFAQCYLrNZ4iSjz0EgnxCcWeSPxX')
+    .then(res => res.json())
+    .then(data => {
+        obj = data;
     })
-
-    let currencyArray = [
-        3858.18,
-        (await currencies).data.MXN,
-        1,
-        (await currencies).data.EUR,
-        (await currencies).data.JPY,
-        (await currencies).data.GBP,
-        (await currencies).data.CNY
-    ]
+    .then(() => {
+        // console.log(obj);
+        let currencies = obj.data
+        let currencyArray = [3858.18, currencies.MXN, 1, currencies.EUR, currencies.JPY, currencies.GBP, currencies.CNY]
+        // console.log(someRandomNameIDK)
     
+    
+
+        
+    });
+
+    
+
+    //let currencyArray = [3858.18, 16.96, 1, 0.93, 157.41, 0.79, 7.27]
     const symbolArray = ["$ COP", "$ MXN", "$ USD", "€ EUR", "¥ JPY", "£ GBP", "¥ CNY"]
     const currencyNames = ["Pesos Colombianos", "Pesos Mexicanos", "Dólares Estadounidenses", "Euros", "Yenes Japoneses", "Libras Esterlinas", "Yuanes Chinos"]
-
-
-    console.log(currencyArray)
 
     let initialCurrency = ref(0)
     let initialName = ref(currencyNames[initialCurrency.value])
@@ -61,32 +79,8 @@
     let initialSymbol = ref('')
     let finalSymbol = ref('')
 
-    function convertCurrency(amount) {
-        return (amount.value*currencyArray[finalCurrency.value]/currencyArray[initialCurrency.value])
-    }
-
-    function convertCurrency11(amount) {
-        return (amount.value*currencyArray[initialCurrency.value]/currencyArray[finalCurrency.value])
-    }
     
-    function validateValue() {
-        if (valueToConvert.value < 0) {
-            valueToConvert.value = 0
-        }
 
-        valueToDisplay.value = valueToConvert.value
-        valueConverted.value = convertCurrency(valueToConvert).toFixed(3)
-
-        initialName.value = currencyNames[initialCurrency.value]
-        finalName.value = currencyNames[finalCurrency.value]
-        initialSymbol.value = symbolArray[initialCurrency.value]
-        finalSymbol.value = symbolArray[finalCurrency.value]
-            
-        initial1Final.value = convertCurrency(stored1)
-        final1Initial.value = convertCurrency11(stored1)
-    }
-
-    
     
 
 </script>
