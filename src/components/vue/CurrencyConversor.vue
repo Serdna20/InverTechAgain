@@ -44,8 +44,6 @@
     const currencyNames = ["Pesos Colombianos", "Pesos Mexicanos", "Dólares Estadounidenses", "Euros", "Yenes Japoneses", "Libras Esterlinas", "Yuanes Chinos"]
 
 
-    console.log(currencyArray)
-
     let initialCurrency = ref(0)
     let initialName = ref(currencyNames[initialCurrency.value])
     let finalCurrency = ref(2)

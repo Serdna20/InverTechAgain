@@ -2,8 +2,26 @@
 
     import { ref } from 'vue'
 
+
+    const apiURL = 'https://api.fastforex.io/fetch-all?api_key=30cc10ae2c-0e290dbfba-sen4t9'
+    let currencies = fetch(apiURL)
+    .then(response => response.json())
+    .then(function(dataReceived) {
+        return dataReceived
+    })
+
+    let currencyArray = [
+        (await currencies).results.COP,
+        (await currencies).results.MXN,
+        1,
+        (await currencies).results.EUR,
+        (await currencies).results.JPY,
+        (await currencies).results.GBP,
+        (await currencies).results.CNY
+    ]
+
     const symbolArray = ["$ COP", "$ MXN", "$ USD", "€ EUR", "¥ JPY", "£ GBP", "¥ CNY"]
-    const currencyArray = [3914, 17, 1, 0.9399, 156.22, 0.7986, 7.2411]
+
     let pickedIndex = ref( document.querySelector("#inicial").value )
     let pickedFinalIndex = ref( document.querySelector("#final").value )
     let initial = ref( document.querySelector("#capitalInicial").value )
